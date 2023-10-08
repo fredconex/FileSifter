@@ -170,16 +170,22 @@ begin
           fromPath := SourceDir + '\' + SiftList.Strings[i];
           toPath := TargetDir + SiftList.Strings[i];
 
-          if FileExists(fromPath) = False then
+
+          //if FileExists(fromPath) = False then
+          if DirPathExists(ExtractFileDir(toPath)) = False then
           begin
-            ForceDirectories(toPath);
+            ForceDirectories(ExtractFileDir(toPath));
             WriteLn(PChar('Creating Dir: ' + toPath));
           end;
 
-          if FileExists(SourceDir + '\' + SiftList.Strings[i]) then
+          if FileExists(fromPath) then
           begin
             CopyFile(PChar(fromPath), PChar(toPath), False);
-            WriteLn(PChar('Creating File:' + toPath));
+            if FileExists(toPath) then
+              WriteLn(PChar('[OK] File:' + toPath))
+            else
+              WriteLn(PChar('[ERROR] File:' + toPath));
+
           end;
         end;
         // Your build logic here
@@ -223,13 +229,13 @@ procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
 var
   save_filename: string;
 begin
-  {if SourceDir <> '' then
+  if SourceDir <> '' then
   begin
     GenList(FileTree.TopItem.Owner);
     save_filename := SourceDir + '\' + SiftListfile;
     WriteLn('Saving to: ' + save_filename);
     SiftList.SaveToFile(save_filename);
-  end;  }
+  end;
 end;
 
 procedure TForm1.add_selClick(Sender: TObject);
