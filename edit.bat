@@ -1,0 +1,2 @@
+FileSifter.exe -edit "./"
+pause

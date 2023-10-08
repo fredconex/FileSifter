@@ -1,0 +1,13 @@
+build.bat
+edit.bat
+FileSifter.lpi
+FileSifter.lpr
+FileSifter.res
+images
+images\checked.png
+images\checker.psd
+images\icon.png
+images\icon.psd
+images\unchecked.png
+Unit1.lfm
+Unit1.pas
