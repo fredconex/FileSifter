@@ -1,0 +1,79 @@
+object Form1: TForm1
+  Left = 254
+  Height = 661
+  Top = 125
+  Width = 458
+  Caption = 'Dreamfoil Creations - FileSifter'
+  ClientHeight = 661
+  ClientWidth = 458
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  LCLVersion = '3.99.0.0'
+  OnClose = FormClose
+  OnCreate = FormCreate
+  object FileTree: TTreeView
+    Left = 0
+    Height = 661
+    Top = 0
+    Width = 458
+    Align = alClient
+    BackgroundColor = 2105376
+    Color = 2105376
+    ExpandSignColor = 16742656
+    ExpandSignType = tvestArrowFill
+    Font.Color = clGray
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Indent = 19
+    MultiSelect = True
+    MultiSelectStyle = [msControlSelect, msShiftSelect, msVisibleOnly]
+    ParentFont = False
+    PopupMenu = PopupMenu1
+    ReadOnly = True
+    ScrollBars = ssAutoVertical
+    SeparatorColor = clSilver
+    StateImages = ImageList1
+    TabOrder = 0
+    Options = [tvoAllowMultiselect, tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips]
+    TreeLinePenStyle = psDot
+    OnDblClick = FileTreeDblClick
+  end
+  object ImageList1: TImageList
+    Left = 32
+    Top = 8
+    Bitmap = {
+      4C7A0300000010000000100000007C0100000000000078DAED53BD4AC35014BE
+      43C7B68F104AD2216348B61242C6D2DD6748401C7470557112048566F30D3A26
+      B4A3838B14720B7D001741C9E4E26207B99EEF8640A16972D12082193E387C3F
+      39E7DE7B228460E20F228EE36E92243A805A3597A669270882F16030981B86C1
+      01D4E0A0D565354D9B9AA6B9B12C4B388E23811A1CB4AA6F84613881CFB66D31
+      1A8D84EBBA12A8C14183A72C4BE7ECD19C0BF482DFF33CE1FBBE046A70D0E081
+      B7243FA4B3AE302F7A16D902E0A0C1435EA324AFE3AE14F21CDE1FCEDF6FFAFE
+      B6DE2FAA78BF486507A8C7CEFE80ABCB36B1BF2DDAFFBFFDFFDBFFFFBF63F69A
+      766719D725A856CD3DBE3D750ED67763F6703467CB632E413538687559767F38
+      65EBD30D7B3E132CBBCC811A1C6955DFA01E13E97BB910ECFD4AB08FEB1CA8C1
+      9106CF9EF3F668CE85EC05FFE70D09B739508383461E7877F2191FB2E5C94ACE
+      8B9E45B6003868E421AF5192D749E30A790EEFFEF9CF55E6EF377D7F5BEF1755
+      BC5FA4B203DFDD9F26F6F7B7F1052BCE8523
+    }
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 32
+    Top = 64
+  end
+  object PopupMenu1: TPopupMenu
+    OnPopup = PopupMenu1Popup
+    Left = 32
+    Top = 128
+    object add_sel: TMenuItem
+      Caption = 'Add selection'
+      OnClick = add_selClick
+    end
+    object rem_sel: TMenuItem
+      Caption = 'Remove selection'
+      OnClick = rem_selClick
+    end
+  end
+end
