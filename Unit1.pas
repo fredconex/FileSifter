@@ -13,7 +13,6 @@ uses
   Dialogs,
   ComCtrls,
   LazFileUtils,
-  StdCtrls,
   Menus;
 
 type
@@ -130,7 +129,6 @@ var
   fromPath: string;
   toPath: string;
   response: string;
-  ZipList: TStringList;
 begin
   writeLn('######################################');
   writeLn('  Dreamfoil Creations - FileSifter');
@@ -254,12 +252,9 @@ begin
     SetNodesTo(1, FileTree.Selections[row]);
 end;
 
-var
-  MenuPop: boolean;
 
 procedure TForm1.PopupMenu1Popup(Sender: TObject);
 begin
-  MenuPop := True;
 end;
 
 end.
