@@ -9,3 +9,8 @@ This project provides a file 'sifting' utility, allowing users to selectively fi
   -src "path"  - Edit from the specified path. \
   **Example:**
     FileSifter.exe -build "C:\target\path"
+
+The edit is done with a gui, build is done by command line.
+
+
+![image](https://github.com/fredconex/FileSifter/assets/109859677/1f4654c9-1611-4906-9afb-1f77f03f8fb4)
