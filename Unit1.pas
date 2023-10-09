@@ -10,6 +10,7 @@ uses
   Classes,
   Controls,
   Forms,
+  Math,
   Dialogs,
   ComCtrls,
   LazFileUtils,
@@ -58,6 +59,7 @@ var
   sr: TSearchRec;
   res: integer;
   TNode: TTreeNode;
+  fPath: string;
 begin
   res := FindFirst(inpath + '\*.*', faAnyFile, sr);
   while res = 0 do
@@ -65,10 +67,8 @@ begin
     if (Sr.Name <> '.') and (Sr.Name <> '..') then
     begin
       TNode := FileTree.Items.AddChild(WinAddr1, Sr.Name);
-      if SiftList.IndexOf(ExtractRelativePath(SourceDir + '\', inpath + '\' + sr.Name)) > -1 then
-        TNode.StateIndex := 2
-      else
-        TNode.StateIndex := 1;
+      fpath := ExtractRelativePath(ExpandFileName(Sourcedir + '\'), ExpandFileName(inpath + '\' + sr.Name));
+      TNode.StateIndex := ifThen(SiftList.IndexOf(fpath) > -1, 2, 1);
       if (sr.Attr and faDirectory) = faDirectory then
         rec_list_dir(inpath + '\' + sr.Name, TNode);
     end;
@@ -168,12 +168,10 @@ begin
           fromPath := SourceDir + '\' + SiftList.Strings[i];
           toPath := TargetDir + SiftList.Strings[i];
 
-
-          //if FileExists(fromPath) = False then
           if DirPathExists(ExtractFileDir(toPath)) = False then
           begin
             ForceDirectories(ExtractFileDir(toPath));
-            WriteLn(PChar('Creating Dir: ' + toPath));
+            WriteLn(PChar('Creating Dir: ' + ExtractFileDir(toPath)));
           end;
 
           if FileExists(fromPath) then
@@ -186,16 +184,13 @@ begin
 
           end;
         end;
-        // Your build logic here
         WriteLn('Build completed!');
         Application.Terminate;
-        exit;
       end
       else
       begin
         WriteLn('Build cancelled.');
         Application.Terminate;
-        exit;
       end;
     end;
   end;
@@ -234,6 +229,7 @@ begin
     WriteLn('Saving to: ' + save_filename);
     SiftList.SaveToFile(save_filename);
   end;
+  SiftList.Free;
 end;
 
 procedure TForm1.add_selClick(Sender: TObject);
